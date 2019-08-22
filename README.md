@@ -1,5 +1,7 @@
 # Space UI
 
+![Screen Recording](space-ui.gif)
+
 ## Project setup
 ```
 npm install

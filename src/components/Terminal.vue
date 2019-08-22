@@ -7,7 +7,7 @@
     <div v-if="main" class="main" v-bind:style="{ height }">
       <pre class="scroller" ref="scroller">{{mainText}}</pre>
     </div>
-    <div v-if="footer" class="footer">{{footer}}</div>
+    <div v-if="footer" class="footer">{{footerText}}</div>
   </div>
 </template>
 
@@ -15,7 +15,14 @@
 export default {
   name: "terminal",
   props: ["width", "height", "x", "y", "title", "footer", "main", "speed"],
-  data: () => ({ mainText: "" }),
+  data() {
+    const footerText = this.footer ? this.getFooter(this.footer) : "";
+
+    return {
+      mainText: "",
+      footerText
+    };
+  },
   methods: {
     type(index = 0) {
       this.mainText += this.main[index];
@@ -28,15 +35,40 @@ export default {
         () => requestAnimationFrame(() => this.type(index)),
         this.speed || 0
       );
+    },
+
+    animateFooter() {
+      this.footerText = this.footerText.substring(1) + this.getFooter(1);
+
+      setTimeout(
+        () => requestAnimationFrame(this.animateFooter),
+        (this.speed || 0) * 80
+      );
+    },
+
+    getFooter(n) {
+      let footer = "";
+      const symbols = ["▂", "▃", "▅", "▆", "▇"];
+
+      for (let i = 0; i < n; i++) {
+        footer += symbols[(Math.random() * 5) | 0];
+      }
+
+      return footer;
     }
   },
 
   mounted() {
-    if (!this.main) return;
-    this.scroller = this.$refs.scroller;
-    this.scroller.addEventListener("wheel", e => e.preventDefault());
-    this.scroller.addEventListener("touchmove", e => e.preventDefault());
-    if (this.main) this.type();
+    if (this.footer) {
+      this.animateFooter();
+    }
+
+    if (this.main) {
+      this.scroller = this.$refs.scroller;
+      this.scroller.addEventListener("wheel", e => e.preventDefault());
+      this.scroller.addEventListener("touchmove", e => e.preventDefault());
+      this.type();
+    }
   }
 };
 </script>
@@ -86,7 +118,6 @@ export default {
       margin: 0 -100px 0 0;
       padding-right: 80px;
       white-space: pre-wrap;
-      // width: calc(100% - 20px);
     }
   }
 

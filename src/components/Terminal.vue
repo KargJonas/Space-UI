@@ -17,7 +17,7 @@ export default {
   props: ["width", "height", "x", "y", "title", "footer", "main", "speed"],
   data: () => ({ mainText: "" }),
   methods: {
-    async type(index = 0) {
+    type(index = 0) {
       this.mainText += this.main[index];
       this.scroller.scrollTop = this.scroller.scrollHeight;
 
@@ -30,6 +30,7 @@ export default {
       );
     }
   },
+
   mounted() {
     if (!this.main) return;
     this.scroller = this.$refs.scroller;
@@ -76,18 +77,26 @@ export default {
 
   .main {
     overflow: hidden;
+    width: calc(100% - 40px);
 
     .scroller {
       overflow-y: scroll;
-      padding-right: 40px;
+      overflow-x: hidden;
       max-height: 100%;
       margin: 0 -100px 0 0;
       padding-right: 80px;
+      white-space: pre-wrap;
+      // width: calc(100% - 20px);
     }
   }
 
   .footer {
     border-top: solid;
+    letter-spacing: -1px;
+  }
+
+  pre {
+    white-space: pre-wrap;
   }
 }
 </style>

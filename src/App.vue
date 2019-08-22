@@ -1,17 +1,28 @@
 <template>
   <div id="app">
     <Terminal
-      title="BOOTED MICROTECH CRD-8 COMBAT ASSAULT DECK :: LINK"
+      title="BOOTING MICROTECH CRD-8 COMBAT ASSAULT DECK"
       v-bind:main="terminalText"
-      footer="FOOTER"
+      v-bind:footer="getFooter(41)"
       height="100px"
-      width="500px"
+      width="506px"
       x="100px"
       y="50px"
-      speed="1"
+      speed="3"
     />
 
-    <Terminal title="||" width="100px" x="200px" y="500px" />
+    <Terminal
+      title="OUTSTREAM"
+      v-bind:main="terminalText2"
+      v-bind:footer="getFooter(23)"
+      height="100px"
+      width="300px"
+      x="350px"
+      y="320px"
+      speed="3"
+    />
+
+    <Terminal title="||" width="100px" x="200px" y="300px" />
   </div>
 </template>
 
@@ -19,22 +30,35 @@
 import Terminal from './components/Terminal.vue'
 import "./global.scss";
 
-const terminalText = `SHIELDS ........ 100%
-CHECKS ......... 100%
-SHIELDS ........ 100%
-CHECKS ......... 100%
-SHIELDS ........ 100%
-CHECKS ......... 100%
-SHIELDS ........ 100%
-CHECKS ......... 100%
-SHIELDS ........ 100%
-CHECKS ......... 100%
-`;
+const terminalText = `BOOTING
+
+SHIELDS ..................... 73%\tDONE\t0x06
+WEAPONS .....................  3%\tDONE\t0xa4
+LIFE SUPPORT SYSTEMS ........ 89%\tDONE\t0x1f
+REACTOR CORE ................ 81%\tDONE\t0x13`;
+
+let terminalText2 = "";
+
+for (let i = 0; i < 100; i++) {
+  terminalText2 += Math.floor(Math.random() * 1000000);
+}
 
 export default {
   name: 'app',
   components: { Terminal },
-  data: () => ({ terminalText })
+  data: () => ({ terminalText, terminalText2 }),
+  methods: {
+    getFooter(n) {
+      let footer = "";
+      const symbols = ["▂", "▃", "▅", "▆", "▇"];
+
+      for (let i = 0; i < n; i++) {
+        footer += symbols[(Math.random() * 5) | 0];
+      }
+
+      return footer;
+    }
+  }
 }
 </script>
 

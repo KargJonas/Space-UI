@@ -14,8 +14,14 @@
   src: url("assets/Libre_Barcode_39/LibreBarcode39-Regular.ttf");
 }
 
+@font-face {
+  font-family: DOS;
+  src: url("assets/DOS/Perfect DOS VGA 437.ttf");
+}
+
 * {
-  font-family: Anonymous;
+  // font-family: Anonymous;
+  font-family: DOS;
   font-size: 16px;
   user-select: none;
   cursor: default;

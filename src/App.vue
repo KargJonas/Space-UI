@@ -1,28 +1,34 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Terminal
+      title="BOOTED MICROTECH CRD-8 COMBAT ASSAULT DECK :: LINK"
+      main="LOL"
+      footer="FOOTER"
+      height="100px"
+      width="500px"
+      x="100px"
+      y="50px"
+      speed="100"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Terminal from './components/Terminal.vue'
+import "./global.scss";
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
-  }
+  components: { Terminal },
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+html {
+  background-color: #0c0c0c;
+}
+
+body {
+  margin: 0;
 }
 </style>

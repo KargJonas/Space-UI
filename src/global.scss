@@ -1,0 +1,22 @@
+@font-face {
+  font-family: Miriam;
+  src: url("assets/Miriam_Libre/MiriamLibre-Regular.ttf");
+}
+
+@font-face {
+  font-family: Anonymous;
+  src: url("assets/Anonymous_Pro/AnonymousPro-Bold.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Barcode;
+  src: url("assets/Libre_Barcode_39/LibreBarcode39-Regular.ttf");
+}
+
+* {
+  font-family: Anonymous;
+  font-size: 16px;
+  user-select: none;
+  cursor: default;
+}

@@ -1,6 +1,8 @@
 # Space UI
 
-![Screen Recording](space-ui.gif)
+Just a scifi-looking "UI" with some cool components for generating windows.
+
+![Example](space-ui.gif)
 
 ## Project setup
 ```
